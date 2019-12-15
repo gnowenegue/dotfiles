@@ -1,4 +1,4 @@
 alias b='brew'
 alias bc='brew cask'
-alias brewbrew='brew update; brew upgrade; brew cask upgrade;  brew doctor; zmanage update;'
+alias brewbrew='brew update; brew upgrade; brew cask upgrade;  brew doctor; zmanage update; softwareupdate -i -a;'
 alias bb='brewbrew'
