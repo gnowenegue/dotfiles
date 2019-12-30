@@ -2,3 +2,19 @@ alias b='brew'
 alias bc='brew cask'
 alias brewbrew='brew update; brew upgrade; brew cask upgrade;  brew doctor; zmanage update; mas upgrade; softwareupdate -i -a;'
 alias bb='brewbrew'
+
+esync() {
+  local SOURCE_DIR=$1;
+  local DEST_DIR=$2;
+  shift 2;
+  echo "Syncing files from ${SOURCE_DIR} to ${DEST_DIR}";
+  sudo rsync -avzhP --append-verify --delete-after "$@" ${SOURCE_DIR} ${DEST_DIR}
+}
+
+ecopy() {
+  local SOURCE_DIR=$1;
+  local DEST_DIR=$2;
+  shift 2;
+  echo "Copying files from ${SOURCE_DIR} to ${DEST_DIR}";
+  sudo rsync -avzhP --append-verify "$@" ${SOURCE_DIR} ${DEST_DIR}
+}
