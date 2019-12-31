@@ -6,9 +6,10 @@ alias bb='brewbrew'
 esync() {
   local SOURCE_DIR=$1;
   local DEST_DIR=$2;
-  shift 2;
+  shift 2
   echo "Syncing files from ${SOURCE_DIR} to ${DEST_DIR}";
-  sudo rsync -avzhP --append-verify --delete-after "$@" ${SOURCE_DIR} ${DEST_DIR}
+  test "$1" != '-n' && (sudo true)
+  rsync -avzhP --append-verify --delete-after $@ ${SOURCE_DIR} ${DEST_DIR}
 }
 
 ecopy() {
@@ -16,5 +17,6 @@ ecopy() {
   local DEST_DIR=$2;
   shift 2;
   echo "Copying files from ${SOURCE_DIR} to ${DEST_DIR}";
-  sudo rsync -avzhP --append-verify "$@" ${SOURCE_DIR} ${DEST_DIR}
+  test "$1" != '-n' && (sudo true)
+  rsync -avzhP --append-verify $@ ${SOURCE_DIR} ${DEST_DIR}
 }
