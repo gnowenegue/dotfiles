@@ -1,0 +1,6 @@
+#! /bin/bash
+# alias: brew doc
+#:  * `doc` [args...]
+#:    `brew doc` is an alias for `brew doctor`
+brew doctor $*
+
