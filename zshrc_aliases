@@ -1,6 +1,6 @@
 alias b='brew'
 alias bc='brew cask'
-alias brewbrew='brew update; brew upgrade; brew upgrade --cask;  brew doctor; zimfw update; zimfw upgrade; mas upgrade; softwareupdate -i -a;'
+alias brewbrew='brew update; brew upgrade; brew cleanup;  brew doctor; zimfw update; zimfw upgrade; mas upgrade; softwareupdate -ia; npm install npm -g; npm update -g'
 alias bb='brewbrew'
 
 esync() {
