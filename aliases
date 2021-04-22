@@ -1,7 +1,9 @@
 alias b='brew'
 alias bc='brew cask'
-alias brewbrew='brew update; brew upgrade; brew cleanup;  brew doctor; zimfw update; zimfw upgrade; mas upgrade; softwareupdate -ia; npm update -g'
+alias brewbrew='brew update; brew upgrade; brew cleanup; brew doctor; zimfw update; zimfw upgrade; mas upgrade; softwareupdate -ia; npm update -g; ncu -g'
 alias bb='brewbrew'
+alias gitpurgelocalbranches='gbl | ag ": gone]" | awk "{ print $1 }" | xargs -n 1 g branch -D'
+alias gpl='gitpurgelocalbranches'
 
 esync() {
   local SOURCE_DIR=$1;
