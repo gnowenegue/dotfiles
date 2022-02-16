@@ -5,20 +5,25 @@ alias bb='brewbrew'
 alias gitpurgelocalbranches="gbl | ag ': gone]' | awk '{ print \$1 }' | xargs -n 1 git branch -D"
 alias gpl='gitpurgelocalbranches'
 
+alias d='docker'
+alias dc='docker-compose'
+
+alias tmux='tmux -2'
+
 esync() {
-  local SOURCE_DIR=$1;
-  local DEST_DIR=$2;
+  local SOURCE_DIR=$1
+  local DEST_DIR=$2
   shift 2
-  echo "Syncing files from ${SOURCE_DIR} to ${DEST_DIR}";
+  echo "Syncing files from ${SOURCE_DIR} to ${DEST_DIR}"
   test "$1" != '-n' && (sudo true)
   rsync -avzhP --append-verify --delete-after $@ ${SOURCE_DIR} ${DEST_DIR}
 }
 
 ecopy() {
-  local SOURCE_DIR=$1;
-  local DEST_DIR=$2;
-  shift 2;
-  echo "Copying files from ${SOURCE_DIR} to ${DEST_DIR}";
+  local SOURCE_DIR=$1
+  local DEST_DIR=$2
+  shift 2
+  echo "Copying files from ${SOURCE_DIR} to ${DEST_DIR}"
   test "$1" != '-n' && (sudo true)
   rsync -avzhP --append-verify $@ ${SOURCE_DIR} ${DEST_DIR}
 }
