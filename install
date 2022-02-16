@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -eoux pipefail
+
+ln -isv "$HOME/dotfiles/.tmux.conf" "$HOME"
+ln -isv "$HOME/dotfiles/.p10k.zsh" "$HOME"
+
+source "$HOME/dotfiles/install-brew-aliases"
