@@ -4,10 +4,26 @@ set -eoux pipefail
 
 BIN_DIR="/usr/local/bin"
 BREW_ALIASES_DIR="$HOME/.brew-aliases"
-MY_BREW_ALIASES_DIR="$HOME/dotfiles/brew-aliases"
+MY_BREW_ALIASES_DIR="$PWD/brew-aliases"
 
-ln -isv $MY_BREW_ALIASES_DIR/* $BREW_ALIASES_DIR
+if [[ ! -d "$BREW_ALIASES_DIR" ]]; then
+  echo "$BREW_ALIASES_DIR doesn't exist."
+  echo "Creating $BREW_ALIASES_DIR."
+  mkdir -p "$BREW_ALIASES_DIR"
+else
+  echo "$BREW_ALIASES_DIR exists."
+fi
 
-for FILE in $MY_BREW_ALIASES_DIR/*;
-  do ln -isv $FILE "$BIN_DIR/brew-$(basename $FILE)";
+if [[ ! -d "$BIN_DIR" ]]; then
+  echo "$BIN_DIR doesn't exist."
+  echo "Creating $BIN_DIR."
+  sudo mkdir -p "$BIN_DIR"
+else
+  echo "$BIN_DIR exists."
+fi
+
+ln -isv "$MY_BREW_ALIASES_DIR"/* $BREW_ALIASES_DIR
+
+for FILE in "$MY_BREW_ALIASES_DIR"/*;
+  do sudo ln -isv "$FILE" "$BIN_DIR/brew-$(basename $FILE)";
 done
